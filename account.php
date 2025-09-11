@@ -2,7 +2,14 @@
 declare(strict_types=1);
 
 session_start();
-if (isset($_SESSION["name"]))
+
+if (isset($_GET['logout']))
+{
+  unset($_SESSION['email']);
+  unset($_GET['logout']);
+}
+
+if (isset($_SESSION["email"]) && !isset($_GET['change']))
   header("Location: home.php");
 ?>
 

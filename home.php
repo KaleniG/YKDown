@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 session_start();
-if (!isset($_SESSION['email']))
-  header('Location: index.php');
+//if (!isset($_SESSION['email']))
+//  header('Location: index.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +16,7 @@ if (!isset($_SESSION['email']))
 <body>
   <ul>
     <li><a href="index.php">YKDOWN</a></li>
+    <li><a href="account.php?logout=1">Log out</a></li>
   </ul>
 <?php
   include ('config/database.php');
@@ -39,7 +40,6 @@ if (!isset($_SESSION['email']))
 
     $stmt = $conn->prepare("SELECT Link, Resolution FROM Downloads WHERE UserId = ?");
     $stmt->bind_param("s", $user_id);
-    $stmt->execute();
     $stmt->execute();
     $result = $stmt->get_result();
 
